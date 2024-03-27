@@ -1,9 +1,9 @@
 package Questionary;
-
 import java.util.Scanner;
-
+import java.util.Random;
 public class Questionary {
     Scanner ler = new Scanner(System.in);
+    Random gerar = new Random();
     boolean test = true;
     public int num;
     public int value;
@@ -38,7 +38,7 @@ public class Questionary {
         int cont = 1;
 
         for (int i = 0; i < 7; i++) {
-            System.out.println("Insira o valor da " + cont + "º carta.");
+            System.out.println(cont+"° carta : ");
             this.value = ler.nextInt();
             arraysCards[i] = this.value;
             cont += 1;
@@ -55,7 +55,22 @@ public class Questionary {
         }
 
     }
-
+    public void randomValue (int [] arr){
+        int j = 0;
+        for (int i : arr) {
+            int random = gerar.nextInt(13) + 1;
+            arr[j] = random;
+            j++;
+        }
+        forMethod(arr);
+    }
+    public void forMethod (int [] arr){
+        int j = 0;
+       for (int i : arr){
+           System.out.print(" "+arr[j]);
+           j++;
+        }
+    }
     public void stopCode() {
         System.exit(0);
     }

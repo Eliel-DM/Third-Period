@@ -6,53 +6,59 @@ import Questionary.Questionary;
 import java.util.Scanner;
 
 public class Application {
-    public static void main(String [] args) {
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
 
-        for (int c = 0; c <= 1; c++) {
-            Buble bubble = new Buble();
-            Select selectio = new Select();
-            Insert insertion = new Insert();
 
-            Questionary using = new Questionary();
-            Scanner ler = new Scanner(System.in);
-            int[] arrayCards = new int[7];
+        Buble bubble = new Buble();
+        Select selectio = new Select();
+        Insert insertion = new Insert();
+        Questionary using = new Questionary();
 
-            using.apresentation();
-            try {
-                using.setValue(arrayCards);
+        int[] arrayCards = new int[7];
 
-            } catch (RuntimeException execessao) {
-                System.out.println(execessao.getMessage());
-                using.stopCode();
-            }
+        System.out.println("Deseja selecioar as cartas ou gerar de forma aleatória ?\n 1- Selecionar\n 2- Aleatoriamente");
+        int selectMode = ler.nextInt();
+        switch (selectMode) {
+            case 1:
+                selectMode = 1;
+                System.out.println("Selecione cartas entre 1 e 13");
 
-            using.selectCode();
-            using.num = ler.nextInt();
+                try {
+                    using.setValue(arrayCards);
 
-            try {
-                using.seleSort(using.num);
-                if (using.num == 1) {
-                    bubble.Bsort(arrayCards);
+                } catch (RuntimeException execessao) {
+                    System.out.println(execessao.getMessage());
+                    using.stopCode();
                 }
-                if (using.num == 2) {
-                    selectio.sSort(arrayCards);
-                }
-                if (using.num == 3) {
-                    insertion.iSort(arrayCards);
+                break;
+            case 2:
+                selectMode = 2;
+                using.randomValue(arrayCards);
+                //System.out.println("As cartas geradas foram: ");
 
-                }
-
-            } catch (RuntimeException execessao) {
-                System.out.println(execessao.getMessage());
-                using.stopCode();
-            }
-
-            System.out.println("Deseja começar novamente?");
-            System.out.println("NÃO - 1 ");
-            System.out.println("SIM - 0");
-            c = ler.nextInt();
+                break;
         }
 
+        /*
+        try {
+            using.seleSort(using.num);
+            if (using.num == 1) {
+                bubble.Bsort(arrayCards);
+            }
+            if (using.num == 2) {
+                selectio.sSort(arrayCards);
+            }
+            if (using.num == 3) {
+                insertion.iSort(arrayCards);
 
+            }
+
+        } catch (RuntimeException execessao) {
+            System.out.println(execessao.getMessage());
+            using.stopCode();
+        }
+
+*/
     }
 }
