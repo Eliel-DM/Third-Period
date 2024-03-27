@@ -3,3 +3,5 @@ git add . |Coloca todos os arquivos disponíveis na pasta para área de transfer
 git commit -m "Mensagem desejada " | Informar alteração feita ou código enviado.
 git branch -M main | Faz um branch dos arquivos enviados e dos presentes no repo. 
 git git push -u origin main | envia os arquivos para o respositório remoto.
+
+Solo esto.
